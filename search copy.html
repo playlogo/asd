@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CHECK24 Suche</title>
+		<style>
+			html {
+				box-sizing: border-box;
+			}
+
+			*,
+			*:before,
+			*:after {
+				box-sizing: inherit;
+			}
+
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				margin: 0;
+			}
+
+			header {
+				padding: 40px;
+				background-color: #043773;
+			}
+
+			header .content {
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			header h1 {
+				margin: 0;
+				padding: 0.67em 0;
+			}
+
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			main .content {
+				padding: 1em 0;
+			}
+
+			.search form {
+				display: flex;
+				margin-top: 20px;
+			}
+
+			.search form input[type="text"] {
+				flex: 1;
+			}
+
+			.results table {
+				width: 100%;
+			}
+
+			.results table td,
+			.results table th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+
+			.results table tr:hover {
+				background-color: #ddd;
+			}
+
+			.results table th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #005ea8;
+				color: white;
+			}
+
+			.results img {
+				width: 200px;
+				height: 200px;
+			}
+
+			.logo {
+				display: flex;
+				gap: 20px;
+				align-items: start;
+				filter: brightness(1000);
+			}
+
+			.logo h1 {
+				padding: 0;
+				margin: 0;
+				font-size: 3.2rem;
+				color: white;
+			}
+
+			.search-input {
+				padding: 13px;
+				font-size: 17px;
+				outline: none;
+				border: none;
+				border-radius: 999px;
+				transition: all .3s ease;
+			}
+
+			.search-input:focus {
+				box-shadow: 0 0 0 3px #ffbb19;
+			}
+
+			.product-grid {
+				display: grid;
+				grid-template-columns: 1fr 1f;
+			}
+
+			.button-search {
+				background-color: #005ea8;
+				color: white;
+				border: none;
+				border-radius: 999px;
+				margin-left: 10px;
+				cursor: pointer;
+
+			}
+
+			/* Ads */
+			@media only screen and (max-width: 1200px) {
+				.ads {
+					display: none;
+				}
+			}
+			
+			.ads {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				position: fixed;
+
+				display: none;
+			}
+
+			.ads {
+				position: absolute;
+				width: calc(100vw - 800px);
+				height: calc(100vh -120px);
+				overflow: hidden;
+				padding-left: 30px;
+			}
+
+			.left {
+				right: 0;
+				
+				top: 230px;
+				width: calc((100vw - 800px) / 2);
+			}
+
+			.ads > div {
+				border: 1px solid black;
+				padding: 1px;
+				width:  calc((100vw - 1000px ) / 2);
+				height: 300px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.ads > div > div {
+				background-color: red;
+				height: 60px;
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				padding-top: 10px;
+				padding-left: 10px;
+
+				animation: rainbow 0.5s infinite;
+			}
+
+
+			@keyframes rainbow {
+					0% { background-color: red; }
+					14% { background-color: orange; }
+					28% { background-color: yellow; }
+					42% { background-color: green; }
+					57% { background-color: blue; }
+					71% { background-color: indigo; }
+					85% { background-color: violet; }
+					100% { background-color: red; }
+			}
+
+
+
+			.ads > div > div > h3 {
+				margin: 0px;
+			}
+
+			.ads > div > img {
+				width: 100%;
+				height: 270px;
+			}
+			
+			
+		</style>
+	<body>
+		<header>
+			<div class="content">
+				
+				<div class="logo">
+					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">	
+					<img
+						src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Logo_CHECK24.png"
+						height="80"
+					/>				
+					</a>
+
+					<h1>SHOPPING</h1>
+				</div>
+
+				<div class="search">
+					<form>
+						<input type="text" name="q" placeholder="Suchbegriff" autofocus="autofocus" class="search-input" />
+						<button class="button-search" type="submit">
+							<svg color="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.0999984741211 102" width="24" height="24"> 
+								<path d="M64.8,14.1C52.6-1.7,29.9-4.6,14.1,7.5S-4.6,42.4,7.5,58.2c11,14.2,30.3,17.9,45.6,9.9L77,99  c0.9,1.2,2.6,1.4,3.6,0.5l5.5-4.2c1.2-0.9,1.4-2.6,0.5-3.6L62.8,60.8C74.5,48,75.8,28.2,64.8,14.1z M52.9,57.8  c-11.9,9.2-29.1,7-38.3-5c-9.3-11.9-7-29.1,5-38.3c11.9-9.3,29.1-7,38.3,5C67.1,31.4,64.8,48.5,52.9,57.8z" fill="#333333">
+								</path> 
+						</svg>
+							</button>
+					</form>
+				</div>
+			</div>
+		</header>
+		<div class="ads">
+			<div>
+				<img
+					src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ0CwOTuMtNBtAL30PkYt-hFkLi8gav6Qvn7tLUV0gw-2zEc4_s"
+					alt="Ad"
+				/>
+				<div  class="rainbow">
+					<h3>Unleash the Power of Dancing Cucumbers!</h3>
+					<a href="https://www.dancingcucumbers.com">https://www.dancingcucumbers.com</a>
+				</div>		
+			</div>
+			<div>
+				<img
+					src="https://storage.googleapis.com/pod_public/1300/152622.jpg"
+					alt="Ad"
+				/>
+				<div  class="rainbow">
+					<h3>Find Your Dream Unicorn in 30 Days!	</h3>
+					<a href="https://www.findyourunicornnow.com">https://www.findyourunicornnow.com </a>
+				</div>	
+			</div>
+			<div>
+				<img
+
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZQSTl2qlWDbIZiDybtSCXLGU8ZxXU_rguMg&s"
+					alt="Ad"
+				/>
+				<div  class="rainbow">
+					<h3>The Ultimate Guide to Training Your Goldfish</h3>
+					<a href="https://www.goldfishtrainingexpert.com">https://www.goldfishtrainingexpert.com</a>
+				</div>	
+			</div>
+			<div>
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToAtRfV3KsX-Z1GlRsi6Q0o3YQOSRwElpqOQ&s"
+					alt="Ad"
+				/>
+				<div  class="rainbow">
+					<h3>Solar-Powered Shoes: Walk All Day for Free!</h3>
+					<a href="https://www.solarshoesrevolution.com">https://www.solarshoesrevolution.com	</a>
+				</div> 
+			</div>	
+		</div>
+		<main>
+			<div class="content">
+				
+				<div class="results">
+					<h3>Ergebnisse</h3>
+					<div class="product-grid">
+						<div class="productcard"></div>
+						<div class="product card"></div>
+						<div class="product card"></div>
+					</div>
+				</div>
+
+					<table>
+						<thead>
+							<tr>
+								<th scope="col">Bild</th>
+								<th scope="col">Produkt</th>
+								<th scope="col">Preis</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{range .Products}}
+							<tr>
+								<td><img src="{{.Image}}" alt="Product Image" /></td>
+								<td>{{.Name}}</td>
+								<td>{{.Price}}</td>
+							</tr>
+							{{else}}
+							<tr>
+								<td colspan="3">No products available.</td>
+							</tr>
+							{{end}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<div class="ads left">
+			<div>
+				<img
+					src="https://www.gastroback.de/media/image/b3/3c/fe/GASTROBACK-42396-Design-Toaster-Digital-4S-pic_03.jpg"
+					alt="Ad"
+				/>
+				<div class="rainbow">
+					<h3>Discover the Secret of Talking Toasters</h3>
+					<a href="https://www.talkingtoastersecrets.com">https://www.talkingtoastersecrets.com</a>
+				</div>		
+			</div>
+			<div>
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWqTgodYqS5wComtj4GjRhTkobEx95mmToDg&s"
+					alt="Ad"
+				/>
+				<div class="rainbow">
+					<h3>10 Ways to Make Your Pillow Smarter</h3>
+					<a href="https://www.smartpillowguide.com">https://www.smartpillowguide.com </a>
+				</div>	
+			</div>
+			<div>
+				<img
+
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv4HWCWrIEdAVuqbFsCp9Uif8cBoSbvUBojA&s"
+					alt="Ad"
+				/>
+				<div class="rainbow">
+					<h3>Why You Should Invest in Flying Bicycles/h3>
+					<a href="https://www.flyingbicyclesfuture.com">https://www.flyingbicyclesfuture.com</a>
+				</div>	
+			</div>
+			<div>
+				<img
+					src="https://upload.wikimedia.org/wikipedia/commons/0/09/2016_Open_Beatz_-_Marshmello_-_by_2eight_-DSC_4448.jpg"
+					alt="Ad"
+				/>
+				<div class="rainbow">
+					<h3>Unlock the Hidden Potential of Marshmallow Sculpting</h3>
+					<a href="https://www.marshmallowsculptingpro.com">https://www.marshmallowsculptingpro.com</a>
+				</div> 
+			</div>	
+		</div>
+		</body>
+<script>
+	var elements = document.querySelectorAll('.rainbow')
+		var animationDuration = 1000; // in milliseconds
+
+		// Set the animationDelay of each element to a random value
+		// between 0 and animationDuration:
+		for (var i = 0; i < elements.length; i++) {
+			var randomDuration = Math.floor(Math.random() * animationDuration);
+			elements[i].style.animationDelay = randomDuration + 'ms';  
+		}
+
+	var asdasd = document.querySelectorAll('.ads')
+	var showAds = Math.floor(Math.random() * 6) == 1;
+
+	for (var i = 0; i < asdasd.length; i++) {
+		if (showAds)
+ {			asdasd[i].style.display = "block";  }
+		}
+</script>
+</html>
